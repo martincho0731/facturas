@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Facturas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/facturas/manifest.json">
+
+    <script defer src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jspdf/dist/jspdf.umd.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service_worker.js')
+        .then(() => console.log("Service Worker registrado"))
+        .catch(error => console.log("Error al registrar el Service Worker", error));
+}
+
+        </script>
+    <header>
+        <h1>Generador de Facturas</h1>
+    </header>
+    
+    <section id="datos-empresa">
+        <h2>Datos de la Empresa</h2>
+        <input type="text" id="nombre-empresa" placeholder="Nombre de la Empresa">
+        <input type="text" id="razon-social" placeholder="Razón Social">
+        <input type="text" id="rut" placeholder="RUT">
+        <input type="text" id="direccion" placeholder="Dirección">
+        <button onclick="guardarEmpresa()">Guardar Datos</button>
+    </section>
+    
+    <section id="productos">
+        <h2>Agregar Productos</h2>
+        <input type="text" id="descripcion" placeholder="Descripción">
+        <input type="number" id="cantidad" placeholder="Cantidad">
+        <input type="number" id="precio" placeholder="Precio Unitario">
+        <button onclick="agregarProducto()">Agregar Producto</button>
+        <ul id="lista-productos"></ul>
+    </section>
+    
+    <section id="factura">
+        <h2>Generar Factura</h2>
+        <button onclick="generarFacturaPDF()">Descargar Factura en PDF</button>
+    </section>
+</body>
+</html>

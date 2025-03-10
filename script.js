@@ -33,7 +33,7 @@ function guardarEmpresa() {
 
 function agregarProducto() {
     const descripcion = document.getElementById("descripcion").value;
-    const cantidad = parseInt(document.getElementById("cantidad").value);
+    const cantidad = parseFloat(document.getElementById("cantidad").value);
     const precio = parseFloat(document.getElementById("precio").value);
     
     if (!descripcion || isNaN(cantidad) || isNaN(precio)) {
